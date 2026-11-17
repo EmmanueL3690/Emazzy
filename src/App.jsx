@@ -122,7 +122,7 @@ function About() {
         <Reveal className="about-heading"><h2>Curiosity is<br/>where the <span>build</span><br/>begins<span className="blue-dot">.</span></h2>
           <div className="portrait-frame">
         <img
-          src="/images/emmanuel-photo.jpeg"
+          src="/images/emmanuel-photo.jpg"
           alt="Portrait of Emmanuel Izuchukwu Innocent"
           onError={(e) => {
             console.error("Image failed to load:", e.currentTarget.src);

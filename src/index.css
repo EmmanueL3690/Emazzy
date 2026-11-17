@@ -300,9 +300,11 @@ button { color: inherit; }
 .story-chapter { display: grid; grid-template-columns: 34px 1fr 20px; gap: 13px; align-items: start; padding: 19px 0; border-bottom: 1px solid var(--line); }
 .story-chapter > span { color: var(--accent); font: 9px 'DM Mono'; padding-top: 3px; }.story-chapter h3 { margin: 0 0 6px; font: 10px 'DM Mono'; letter-spacing: .08em; }.story-chapter p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.7; }.story-chapter svg { color: var(--subtle); }
 .portrait-frame {
-  width: min(100%, 290px);
-  height: 400px;
-  margin-top: 38px;
+  width: min(100%, 320px);
+  aspect-ratio: 3 / 4 !important;
+  height: auto !important;
+  max-height: none !important;
+  margin: 28px auto 0;
   position: relative;
   overflow: hidden;
   border: 1px solid var(--line-strong);
@@ -310,16 +312,66 @@ button { color: inherit; }
 }
 
 .portrait-frame img {
-  width: 130%;
-  height: 108%;
-  object-fit: contain;
-  object-position: center;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 20% !important;
+  display: block;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.35s ease;
+}
+
+@media (hover: hover) {
+  .portrait-frame:hover img {
+    transform: scale(1.03);
+  }
+}
+
+@media (min-width: 768px) {
+  .portrait-frame {
+    width: min(100%, 460px);
+    aspect-ratio: 29 / 40 !important;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+.portrait-placeholder {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: radial-gradient(circle at 50% 40%, rgba(61,137,240,.18), transparent 60%), repeating-linear-gradient(135deg, transparent 0 14px, var(--line) 15px 16px);
 }
-.portrait-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: radial-gradient(circle at 50% 40%, rgba(61,137,240,.18), transparent 60%), repeating-linear-gradient(135deg, transparent 0 14px, var(--line) 15px 16px); }
-.portrait-placeholder span, .portrait-placeholder small, .portrait-index { font: 8px 'DM Mono'; letter-spacing: .08em; color: var(--muted); }.portrait-placeholder b { font-size: 35px; letter-spacing: -.09em; }.portrait-placeholder small { font-size: 7px; }.portrait-index { position: absolute; right: 12px; bottom: 12px; z-index: 3; background: var(--bg); padding: 6px 8px; }
+
+.portrait-placeholder span,
+.portrait-placeholder small,
+.portrait-index {
+  font: 8px 'DM Mono';
+  letter-spacing: .08em;
+  color: var(--muted);
+}
+
+.portrait-placeholder b {
+  font-size: 35px;
+  letter-spacing: -.09em;
+}
+
+.portrait-placeholder small {
+  font-size: 7px;
+}
+
+.portrait-index {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 3;
+  background: var(--bg);
+  padding: 6px 8px;
+}
 .project-repo-row { margin-top: 16px; display: flex; align-items: center; gap: 12px; color: var(--subtle); font: 8px 'DM Mono'; letter-spacing: .06em; }.repo-public { color: #28a879; }.repo-private { color: #d19a4a; }
 .modal-repo { margin-top: 20px; font: 9px 'DM Mono'; color: var(--muted); }.modal-repo a { color: var(--accent); display: inline-flex; gap: 8px; align-items: center; }.modal-repo span { color: #d19a4a; }
 .brand-visual { width: 100%; height: 100%; min-height: 315px; position: relative; display: grid; place-items: center; overflow: hidden; }
