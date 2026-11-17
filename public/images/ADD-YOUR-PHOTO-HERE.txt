@@ -1,0 +1,1 @@
+Add your portrait image here and name it emmanuel-photo.jpg. The About section will display it automatically.
